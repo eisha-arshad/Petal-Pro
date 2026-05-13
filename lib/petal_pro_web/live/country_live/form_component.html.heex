@@ -1,0 +1,37 @@
+<div>
+  <.form
+    for={@form}
+    id="country-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save"
+  >
+    <.field type="text" field={@form[:name]} />
+
+    <.field type="text" field={@form[:alpha_2]} />
+
+    <.field type="text" field={@form[:alpha_3]} />
+
+    <.field type="number" field={@form[:country_code]} />
+
+    <.field type="text" field={@form[:iso_3166_2]} />
+
+    <.field type="text" field={@form[:region]} />
+
+    <.field type="text" field={@form[:sub_region]} />
+
+    <.field type="text" field={@form[:iso_3166_2]} />
+
+    <.field type="number" field={@form[:region_code]} />
+
+    <.field type="number" field={@form[:sub_region_code]} />
+
+    <.field type="number" field={@form[:intermediate_region_code]} />
+
+    <.field type="checkbox" field={@form[:member_of_eu]} />
+
+    <div class="flex justify-end">
+      <.button type="submit" phx-disable-with="Saving..." label="Save" />
+    </div>
+  </.form>
+</div>

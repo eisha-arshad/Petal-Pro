@@ -1,0 +1,54 @@
+[
+  {
+    "request": {
+      "options": {
+        "pool": "Elixir.Stripe.API",
+        "with_body": "true"
+      },
+      "body": "mode=subscription&allow_promotion_codes=true&customer=cus_PFDXVnCJHqastp&success_url=http%3A%2F%2Fexample.com&cancel_url=http%3A%2F%2Fexample.com&line_items%5B0%5D%5Bprice%5D=price_1OQj8TIWVkWpNCp7ZlUSOaI9&line_items%5B0%5D%5Bquantity%5D=1&client_reference_id=552&subscription_data%5Bmetadata%5D%5Bsource%5D=user&subscription_data%5Bmetadata%5D%5Bsource_id%5D=4299&subscription_data%5Btrial_period_days%5D=7",
+      "url": "https://api.stripe.com/v1/checkout/sessions",
+      "headers": {
+        "Accept": "application/json; charset=utf8",
+        "Accept-Encoding": "gzip",
+        "Authorization": "***",
+        "Connection": "keep-alive",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Idempotency-Key": "30tgu5sltoh90g371o0006g4",
+        "Stripe-Version": "2022-11-15",
+        "User-Agent": "Stripe/v1 stripe-elixir/2022-11-15"
+      },
+      "method": "post",
+      "request_body": ""
+    },
+    "response": {
+      "binary": false,
+      "type": "ok",
+      "body": "{\n  \"id\": \"cs_test_b1zn0JXStJo8IoVxuZyNS0rWosI2MBbGdRzzzkHqWMQdx8ARD3O7SHvyHH\",\n  \"object\": \"checkout.session\",\n  \"adaptive_pricing\": null,\n  \"after_expiration\": null,\n  \"allow_promotion_codes\": true,\n  \"amount_subtotal\": 0,\n  \"amount_total\": 0,\n  \"automatic_tax\": {\n    \"enabled\": false,\n    \"liability\": null,\n    \"provider\": null,\n    \"status\": null\n  },\n  \"billing_address_collection\": null,\n  \"cancel_url\": \"http://example.com\",\n  \"client_reference_id\": \"552\",\n  \"client_secret\": null,\n  \"collected_information\": {\n    \"shipping_details\": null\n  },\n  \"consent\": null,\n  \"consent_collection\": null,\n  \"created\": 1746005875,\n  \"currency\": \"aud\",\n  \"currency_conversion\": null,\n  \"custom_fields\": [],\n  \"custom_text\": {\n    \"after_submit\": null,\n    \"shipping_address\": null,\n    \"submit\": null,\n    \"terms_of_service_acceptance\": null\n  },\n  \"customer\": \"cus_PFDXVnCJHqastp\",\n  \"customer_creation\": null,\n  \"customer_details\": {\n    \"address\": null,\n    \"email\": \"petal_pro_test_user@example.com\",\n    \"name\": null,\n    \"phone\": null,\n    \"tax_exempt\": \"none\",\n    \"tax_ids\": null\n  },\n  \"customer_email\": null,\n  \"discounts\": [],\n  \"expires_at\": 1746092275,\n  \"invoice\": null,\n  \"invoice_creation\": null,\n  \"livemode\": false,\n  \"locale\": null,\n  \"metadata\": {},\n  \"mode\": \"subscription\",\n  \"payment_intent\": null,\n  \"payment_link\": null,\n  \"payment_method_collection\": \"always\",\n  \"payment_method_configuration_details\": {\n    \"id\": \"pmc_1KQkIYIWVkWpNCp7P1tL9RwN\",\n    \"parent\": null\n  },\n  \"payment_method_options\": {\n    \"card\": {\n      \"request_three_d_secure\": \"automatic\"\n    }\n  },\n  \"payment_method_types\": [\n    \"card\",\n    \"link\"\n  ],\n  \"payment_status\": \"unpaid\",\n  \"permissions\": null,\n  \"phone_number_collection\": {\n    \"enabled\": false\n  },\n  \"recovered_from\": null,\n  \"saved_payment_method_options\": {\n    \"allow_redisplay_filters\": [\n      \"always\"\n    ],\n    \"payment_method_remove\": null,\n    \"payment_method_save\": null\n  },\n  \"setup_intent\": null,\n  \"shipping_address_collection\": null,\n  \"shipping_cost\": null,\n  \"shipping_details\": null,\n  \"shipping_options\": [],\n  \"status\": \"open\",\n  \"submit_type\": null,\n  \"subscription\": null,\n  \"success_url\": \"http://example.com\",\n  \"total_details\": {\n    \"amount_discount\": 0,\n    \"amount_shipping\": 0,\n    \"amount_tax\": 0\n  },\n  \"ui_mode\": \"hosted\",\n  \"url\": \"https://checkout.stripe.com/c/pay/cs_test_b1zn0JXStJo8IoVxuZyNS0rWosI2MBbGdRzzzkHqWMQdx8ARD3O7SHvyHH#fid2cGd2ZndsdXFsamtQa2x0cGBrYHZ2QGtkZ2lgYSc%2FY2RpdmApJ2R1bE5gfCc%2FJ3VuWnFgdnFaMDROVEt8UExSU25SdUtGdTJSPDJJZ2FTdTdHZ0IyS2BIMGQ3XDRgPE1cSH1HbVFkSj1oXU5OQ01zUEN9V3VvRlM8ZzZ1fVVcQ1ZSTH9LYDNxN1FcVmsxQDM1NUdkYTEwYDM2JyknY3dqaFZgd3Ngdyc%2FcXdwYCknaWR8anBxUXx1YCc%2FJ2hwaXFsWmxxYGgnKSdga2RnaWBVaWRmYG1qaWFgd3YnP3F3cGB4JSUl\",\n  \"wallet_options\": null\n}",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Wed, 30 Apr 2025 09:37:55 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "2772",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, HEAD, PUT, PATCH, POST, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-cache, no-store",
+        "Content-Security-Policy": "base-uri 'none'; default-src 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests; report-uri https://q.stripe.com/csp-violation?q=2xHZg5FzUbz83wdoMrntlkT6ehT4IHFhVFXCdW4OrqibxHe0vqFr0oT8akz3OcCT3RTa_GZn0NZdxfyd",
+        "Idempotency-Key": "30tgu5sltoh90g371o0006g4",
+        "Original-Request": "req_wieiC6rLOBvRy9",
+        "Request-Id": "req_wieiC6rLOBvRy9",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Vary": "Origin",
+        "X-Stripe-Priority-Routing-Enabled": "true",
+        "X-Stripe-Routing-Context-Priority-Tier": "api-testmode",
+        "X-Wc": "ABGHI",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "status_code": 200
+    }
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "request": {
+      "options": {
+        "pool": "Elixir.Stripe.API",
+        "with_body": "true"
+      },
+      "body": "timestamp=1749520215&identifier=event_01975787ec5a7408b52d94c956eb2982&event_name=admin_ai_tokens&payload%5Bvalue%5D=1&payload%5Bstripe_customer_id%5D=cus_PFDXVnCJHqastp",
+      "url": "https://api.stripe.com/v1/billing/meter_events",
+      "headers": {
+        "Accept": "application/json; charset=utf8",
+        "Accept-Encoding": "gzip",
+        "Authorization": "***",
+        "Connection": "keep-alive",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Idempotency-Key": "313omne6sslj7nese0000d43",
+        "Stripe-Version": "2022-11-15",
+        "User-Agent": "Stripe/v1 stripe-elixir/2022-11-15"
+      },
+      "method": "post",
+      "request_body": ""
+    },
+    "response": {
+      "binary": false,
+      "type": "ok",
+      "body": "{\n  \"object\": \"billing.meter_event\",\n  \"created\": 1749520215,\n  \"event_name\": \"admin_ai_tokens\",\n  \"identifier\": \"event_01975787ec5a7408b52d94c956eb2982\",\n  \"livemode\": false,\n  \"payload\": {\n    \"stripe_customer_id\": \"cus_PFDXVnCJHqastp\",\n    \"value\": \"1\"\n  },\n  \"timestamp\": 1749520215\n}",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Tue, 10 Jun 2025 01:50:15 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "288",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, HEAD, PUT, PATCH, POST, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-cache, no-store",
+        "Content-Security-Policy": "base-uri 'none'; default-src 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests; report-uri https://q.stripe.com/csp-violation?q=wFR8iugpG5n7taNHZSthOMhzgo6M6VLxz0mmSNYAdSaCIWKWvmBHUh4qVUBixJa6FRaj98_KH6HI5m7r",
+        "Idempotency-Key": "313omne6sslj7nese0000d43",
+        "Original-Request": "req_lE0yOJccVOFnqe",
+        "Request-Id": "req_lE0yOJccVOFnqe",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Vary": "Origin",
+        "X-Stripe-Priority-Routing-Enabled": "true",
+        "X-Stripe-Routing-Context-Priority-Tier": "api-testmode",
+        "X-Wc": "ABGHI",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "status_code": 200
+    }
+  }
+]

@@ -1,0 +1,177 @@
+<div>
+  <.form
+    for={@form}
+    id="post-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save"
+    class="mx-auto grid max-w-4xl gap-6"
+    x-data="{details: false}"
+  >
+    <div class="flex items-center justify-between gap-2">
+      <.breadcrumbs
+        separator="chevron"
+        links={[
+          %{
+            to: ~p"/admin/posts",
+            icon: "hero-signal",
+            label: gettext("Posts"),
+            link_type: "live_redirect"
+          },
+          %{
+            label: @post.category || gettext("This post"),
+            to: ~p"/admin/posts/#{@post}",
+            link_type: "live_patch"
+          }
+        ]}
+      />
+
+      <div class="flex items-center gap-2">
+        <.button
+          size="sm"
+          type="submit"
+          phx-disable-with="Saving..."
+          disabled={@saving}
+          class="flex items-center gap-1"
+        >
+          {gettext("Save and Finish")}
+        </.button>
+      </div>
+    </div>
+
+    <div
+      id="document"
+      class="grid gap-6 rounded-2xl p-4 dark:border-gray-600 dark:bg-gray-800 dark:selection:bg-blue-300 dark:selection:text-gray-800"
+    >
+      <.field type="hidden" field={@form[:author_id]} />
+
+      <div class="rounded-md border border-gray-200 bg-gray-100 dark:border-gray-600 dark:bg-gray-700">
+        <.button
+          size="sm"
+          color="light"
+          x-on:click.prevent="details = !details"
+          class="flex w-full justify-between border-none bg-gray-100 dark:bg-gray-700 dark:focus:text-white"
+          x-bind:class="details ? ' rounded-b-none' : ''"
+        >
+          {gettext("Details")}
+          <.icon
+            name="hero-chevron-down"
+            class="h-4 w-4"
+            x-bind:class="details ? 'rotate-180' : ''"
+          />
+        </.button>
+
+        <div id="details" x-show="details" x-cloak class="px-4 pt-4">
+          <.field
+            type="text"
+            field={@form[:category]}
+            placeholder="Category"
+            class="pc-card__category pc-card__category--primary"
+            phx-debounce={@autosave_delay}
+          />
+
+          <.field
+            type="number"
+            field={@form[:duration]}
+            label="Time to read (in minutes)"
+            class="text-xs uppercase"
+            phx-debounce={@autosave_delay}
+          />
+        </div>
+      </div>
+
+      <.field
+        type="textarea"
+        field={@form[:title]}
+        class="text-3xl font-bold"
+        wrapper_class="mb-0"
+        label_class="hidden"
+        placeholder="Title"
+        rows="2"
+        phx-debounce={@autosave_delay}
+      />
+
+      <div class="grid w-full cursor-pointer gap-2 place-self-center">
+        <.link
+          :if={@form[:cover].value}
+          id="cover"
+          patch={~p"/admin/posts/#{@post.id}/show/edit/files/cover"}
+        >
+          <img src={@form[:cover].value} class="place-self-center rounded-xl" />
+        </.link>
+        <.field
+          :if={@form[:cover].value && @form[:cover_caption].value}
+          type="text"
+          field={@form[:cover_caption]}
+          wrapper_class="mb-0"
+          label_class="hidden"
+          placeholder="Caption for Cover Image"
+          phx-debounce={@autosave_delay}
+        />
+        <.link
+          :if={!@form[:cover].value}
+          id="placeholder"
+          patch={~p"/admin/posts/#{@post.id}/show/edit/files/cover"}
+        >
+          <div class="shadow-xs flex h-96 w-full items-center justify-center rounded-md bg-gray-100 text-gray-400 dark:bg-gray-700 dark:text-gray-600">
+            <.icon name="hero-photo" class="h-24 w-24" />
+          </div>
+        </.link>
+      </div>
+
+      <.field
+        type="textarea"
+        field={@form[:summary]}
+        class="font-semibold"
+        wrapper_class="mb-0"
+        label_class="hidden"
+        placeholder="Summary"
+        phx-debounce={@autosave_delay}
+      />
+
+      <.content_field
+        field={@form[:content]}
+        placeholder="Start typing..."
+        wrapper_class={[
+          "sm:text-sm disabled:bg-gray-100 disabled:cursor-not-allowed",
+          "dark:bg-gray-800 dark:text-gray-300 dark:disabled:bg-gray-700",
+          "focus-within:outline-hidden"
+        ]}
+        label_class="hidden"
+        phx-debounce={@autosave_delay}
+      />
+    </div>
+  </.form>
+
+  <div
+    :if={@saving}
+    id="saving"
+    class="fixed top-20 right-8 z-10 flex items-center gap-2 opacity-0 transition-opacity duration-300"
+    phx-hook="AutosaveIndicator"
+  >
+    <span class="text-sm text-gray-600">Autosaving</span>
+    <div class="h-3 w-3 animate-pulse rounded-full bg-gray-500" />
+  </div>
+
+  <div
+    :if={!@saving && @saved_at}
+    id="saved"
+    class="fixed top-20 right-8 z-10 flex items-center gap-2 transition-opacity duration-300"
+    phx-hook="AutosaveIndicator"
+  >
+    <span class="text-sm text-green-600">Autosaved</span>
+    <div class="h-3 w-3 rounded-full bg-green-500" />
+  </div>
+
+  <%= if @action == :files do %>
+    <.modal title="Images" max_width="lg" close_modal_target={@myself}>
+      <.live_component
+        id="show_files"
+        module={PetalProWeb.AdminFilesLive.FilesComponent}
+        files={@files}
+        image_target={@image_target}
+        parent_target={@myself}
+      />
+    </.modal>
+  <% end %>
+</div>

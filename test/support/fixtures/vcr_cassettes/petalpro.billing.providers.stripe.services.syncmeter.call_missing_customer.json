@@ -1,0 +1,54 @@
+[
+  {
+    "request": {
+      "options": {
+        "pool": "Elixir.Stripe.API",
+        "with_body": "true"
+      },
+      "body": "timestamp=1746076060&identifier=id_281&event_name=api_meter&payload%5Bvalue%5D=1&payload%5Bstripe_customer_id%5D=cus_does_not_exist",
+      "url": "https://api.stripe.com/v1/billing/meter_events",
+      "headers": {
+        "Accept": "application/json; charset=utf8",
+        "Accept-Encoding": "gzip",
+        "Authorization": "***",
+        "Connection": "keep-alive",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Idempotency-Key": "30tktr7r8i511g56rs000ki3",
+        "Stripe-Version": "2022-11-15",
+        "User-Agent": "Stripe/v1 stripe-elixir/2022-11-15"
+      },
+      "method": "post",
+      "request_body": ""
+    },
+    "response": {
+      "binary": false,
+      "type": "ok",
+      "body": "{\n  \"error\": {\n    \"code\": \"resource_missing\",\n    \"doc_url\": \"https://stripe.com/docs/error-codes/resource-missing\",\n    \"message\": \"No such customer: 'cus_does_not_exist'\",\n    \"param\": \"payload[stripe_customer_id]\",\n    \"request_log_url\": \"https://dashboard.stripe.com/test/logs/req_64J6xBVdesTLuX?t=1746076061\",\n    \"type\": \"invalid_request_error\"\n  }\n}\n",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Thu, 01 May 2025 05:07:41 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "358",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, HEAD, PUT, PATCH, POST, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-cache, no-store",
+        "Content-Security-Policy": "base-uri 'none'; default-src 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests; report-uri https://q.stripe.com/csp-violation?q=zgHUYwVuWWLXzV225W5b9dzANN6cfjUAZcPIPIRuv8D_Jt1ue7J63wVYnCIPOIYipksa1aGmy0BOjGwa",
+        "Idempotency-Key": "30tktr7r8i511g56rs000ki3",
+        "Original-Request": "req_64J6xBVdesTLuX",
+        "Request-Id": "req_64J6xBVdesTLuX",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Vary": "Origin",
+        "X-Stripe-Priority-Routing-Enabled": "true",
+        "X-Stripe-Routing-Context-Priority-Tier": "api-testmode",
+        "X-Wc": "ABGHI",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "status_code": 404
+    }
+  }
+]

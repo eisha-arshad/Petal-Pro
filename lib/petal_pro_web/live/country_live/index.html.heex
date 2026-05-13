@@ -1,0 +1,71 @@
+<.container class="py-16">
+  <.page_header title="Listing Countries">
+    <.button link_type="live_patch" label="New Country" to={~p"/countries/new"} />
+  </.page_header>
+
+  <%= if @live_action in [:new, :edit] do %>
+    <.modal title={@page_title}>
+      <.live_component
+        module={PetalProWeb.CountryLive.FormComponent}
+        id={@country.id || :new}
+        action={@live_action}
+        country={@country}
+        return_to={~p"/countries"}
+      />
+    </.modal>
+  <% end %>
+
+  <.table id="countries" rows={@streams.countries}>
+    <:col :let={{_id, country}} label="Name">{country.name}</:col>
+    <:col :let={{_id, country}} label="Alpha 2">{country.alpha_2}</:col>
+    <:col :let={{_id, country}} label="Alpha 3">{country.alpha_3}</:col>
+    <:col :let={{_id, country}} label="Country code">{country.country_code}</:col>
+    <:col :let={{_id, country}} label="Iso 3166 2">{country.iso_3166_2}</:col>
+    <:col :let={{_id, country}} label="Region">{country.region}</:col>
+    <:col :let={{_id, country}} label="Sub region">{country.sub_region}</:col>
+    <:col :let={{_id, country}} label="Iso 3166 2">{country.iso_3166_2}</:col>
+    <:col :let={{_id, country}} label="Region code">{country.region_code}</:col>
+    <:col :let={{_id, country}} label="Sub region code">{country.sub_region_code}</:col>
+    <:col :let={{_id, country}} label="Intermediate region code">
+      {country.intermediate_region_code}
+    </:col>
+    <:col :let={{_id, country}} label="Member of eu">{country.member_of_eu}</:col>
+    <:col
+      :let={{id, country}}
+      label="Actions"
+      class="text-right whitespace-nowrap"
+      row_class="text-right whitespace-nowrap"
+    >
+      <.button
+        color="primary"
+        variant="outline"
+        size="xs"
+        link_type="live_redirect"
+        label="Show"
+        to={~p"/countries/#{country}"}
+      />
+
+      <.button
+        color="white"
+        variant="outline"
+        size="xs"
+        link_type="live_patch"
+        label="Edit"
+        to={~p"/countries/#{country}/edit"}
+      />
+
+      <.button
+        color="danger"
+        variant="outline"
+        link_type="a"
+        to="#"
+        size="xs"
+        label="Delete"
+        phx-click={JS.push("delete", value: %{id: country.id}) |> hide("##{id}")}
+        data-confirm="Are you sure?"
+      >
+        Delete
+      </.button>
+    </:col>
+  </.table>
+</.container>
