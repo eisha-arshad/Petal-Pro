@@ -3,10 +3,10 @@
     <.button
       link_type="live_patch"
       label="Edit Country"
-      to={~p"/countries/#{@country}/show/edit"}
+      to={~p"/admin/countries/#{@country}/show/edit"}
     />
 
-    <.button link_type="live_redirect" label="Back" to={~p"/countries"} />
+    <.button link_type="live_redirect" label="Back" to={~p"/admin/countries"} />
   </.page_header>
 
   <%= if @live_action in [:new, :edit] do %>
@@ -16,7 +16,7 @@
         id={@country.id || :new}
         action={@live_action}
         country={@country}
-        return_to={~p"/countries/#{@country}"}
+        return_to={~p"/admin/countries/#{@country}"}
       />
     </.modal>
   <% end %>

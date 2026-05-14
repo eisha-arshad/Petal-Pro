@@ -53,14 +53,14 @@ defmodule PetalProWeb.CountryLiveTest do
     setup [:create_country]
 
     test "lists all countries", %{conn: conn, country: country} do
-      {:ok, _index_live, html} = live(conn, ~p"/countries")
+      {:ok, _index_live, html} = live(conn, ~p"/admin/countries")
 
       assert html =~ "Listing Countries"
       assert html =~ country.name
     end
 
     test "saves new country", %{conn: conn} do
-      {:ok, index_live, _html} = live(conn, ~p"/countries")
+      {:ok, index_live, _html} = live(conn, ~p"/admin/countries")
 
       assert index_live |> element("a", "New Country") |> render_click() =~
                "New Country"
@@ -75,7 +75,7 @@ defmodule PetalProWeb.CountryLiveTest do
              |> form("#country-form", country: @create_attrs)
              |> render_submit()
 
-      assert_patch(index_live, ~p"/countries")
+      assert_patch(index_live, ~p"/admin/countries")
 
       html = render(index_live)
       assert html =~ "Country created successfully"
@@ -83,7 +83,7 @@ defmodule PetalProWeb.CountryLiveTest do
     end
 
     test "updates country in listing", %{conn: conn, country: country} do
-      {:ok, index_live, _html} = live(conn, ~p"/countries")
+      {:ok, index_live, _html} = live(conn, ~p"/admin/countries")
 
       assert index_live |> element("a[href='/countries/#{country.id}/edit']", "Edit") |> render_click() =~
                "Edit Country"
@@ -98,7 +98,7 @@ defmodule PetalProWeb.CountryLiveTest do
              |> form("#country-form", country: @update_attrs)
              |> render_submit()
 
-      assert_patch(index_live, ~p"/countries")
+      assert_patch(index_live, ~p"/admin/countries")
 
       html = render(index_live)
       assert html =~ "Country updated successfully"
@@ -106,7 +106,7 @@ defmodule PetalProWeb.CountryLiveTest do
     end
 
     test "deletes country in listing", %{conn: conn, country: country} do
-      {:ok, index_live, _html} = live(conn, ~p"/countries")
+      {:ok, index_live, _html} = live(conn, ~p"/admin/countries")
 
       assert index_live |> element("#countries-#{country.id} a", "Delete") |> render_click()
       refute has_element?(index_live, "a[phx-value-id=#{country.id}]")

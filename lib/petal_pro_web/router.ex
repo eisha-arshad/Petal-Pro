@@ -101,13 +101,6 @@ defmodule PetalProWeb.Router do
       live "/orgs", OrgsLive, :index
       live "/orgs/new", OrgsLive, :new
 
-      live "/countries", CountryLive.Index, :index
-      live "/countries/new", CountryLive.Index, :new
-      live "/countries/:id/edit", CountryLive.Index, :edit
-
-      live "/countries/:id", CountryLive.Show, :show
-      live "/countries/:id/show/edit", CountryLive.Show, :edit
-
       scope "/org/:org_slug" do
         live "/", OrgDashboardLive
         live "/edit", EditOrgLive

@@ -52,6 +52,6 @@ defmodule PetalProWeb.CountryLive.Index do
 
   @impl true
   def handle_event("close_modal", _, socket) do
-    {:noreply, push_patch(socket, to: ~p"/countries")}
+    {:noreply, push_patch(socket, to: ~p"/admin/countries")}
   end
 end

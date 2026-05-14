@@ -21,7 +21,7 @@ defmodule PetalProWeb.CountryLive.Show do
 
   @impl true
   def handle_event("close_modal", _, socket) do
-    {:noreply, push_patch(socket, to: ~p"/countries/#{socket.assigns.country}")}
+    {:noreply, push_patch(socket, to: ~p"/admin/countries/#{socket.assigns.country}")}
   end
 
   defp page_title(:show), do: "Show Country"

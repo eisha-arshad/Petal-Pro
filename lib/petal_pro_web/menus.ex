@@ -167,6 +167,17 @@ defmodule PetalProWeb.Menus do
     }
   end
 
+  # ✅ NEW: Countries menu item
+ def get_link(:countries = name, current_user) do
+
+    %{
+      name: name,
+      label: gettext("Countries"),
+      path: ~p"/admin/countries",
+      icon: "hero-globe-alt"
+    }
+end
+
   def get_link(:subscribe = name, _current_user) do
     if Customers.entity() == :user do
       %{
